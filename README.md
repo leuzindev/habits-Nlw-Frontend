@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="./web/src/assets/logo.svg" alt="Logo" width="300"/>
+
+
 </p>
 <h3 align="center">
 Você no controle da sua rotina!
