@@ -1,201 +1,182 @@
-# Habits • Rastreador de hábitos `<NLW Setup/>`
+<p align="center">
+  <img src="./web/src/assets/logo.svg" alt="Logo" width="300"/>
+</p>
+<h3 align="center">
+Você no controle da sua rotina!
+</h3>
 
-![](./.github/banner1.png)
+<br><br>
 
-## Índice
+<p align="center">
+  <img src="https://img.shields.io/static/v1?label=nlw&message=setup&color=blueviolet&style=for-the-badge"/>
+  <img src="https://img.shields.io/github/license/MrRioja/nlw-setup?color=blueviolet&logo=License&style=for-the-badge"/>
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MrRioja/nlw-setup?color=blueviolet&logo=TypeScript&logoColor=white&style=for-the-badge">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MrRioja/nlw-setup?color=blueviolet&style=for-the-badge">
+</p>
+<br>
 
-- [Sobre](#sobre)
-- [Aulas](#aulas)
-- [Referência da API](#referência-da-api)
-- [Demonstração da aplicação completa](#demonstração-da-aplicação-completa)
-- [Instalação](#instalação)
-- [O próximo nível](#o-próximo-nível)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+<p align="center">
+  <a href="#sobre">Sobre</a> •
+  <a href="#habits">Habits</a> •
+  <a href="#instalação">Instalação</a> •
+  <a href="#tecnologias">Tecnologias</a> •
+  <a href="#autor">Autor</a>  
+</p>
 
 ## Sobre
 
-**habits** é um aplicativo projetado para ajudar você a rastrear seus hábitos e melhorar sua qualidade de vida. Com ele, você pode criar uma lista de hábitos que deseja incorporar em sua rotina diária e marcá-los a medida que os pratica.
+Projeto desenvolvido durante a NLW Setup, evento criado pela Rocketseat. Um evento 100% online e GRATUITO, com conteúdo exclusivo e INÉDITO.
 
-O aplicativo apresenta um quadro diário que mostra a frequência dos hábitos praticados, permitindo que você veja sua progresso ao longo do tempo e se motive a seguir em frente.
+Ocorreu do dia 16 ao dia 20 de Janeiro de 2023 e teve como intuito mostrar na prática o poder da stack NodeJS + ReactJS + React Native e como essas tecnologias podem te levar até os seus maiores objetivos como programador.
 
-## Aulas
+<img src="./.github/wallpaper.png" alt="Wallpaper NLW Setup" />
 
-<details>
-  <summary>16/01/2023 • <b>Iniciando o projeto de ponta a ponta</b></summary>
-    Foi ensinado de forma rápida a base dos 3 apps que serão desenvolvidos. Logo no início foi apresentado a configuração do servidor com a biblioteca fastify, em seguida a criação com projeto React com Vite e o uso do Tailwind e por último, a criação e configuração do app mobile com Expo e React Native.
-</details>
+## Habits
 
-<details>
-  <summary>17/01/2023 • <b>Avançando o back-end e front-end</b></summary>
-    Foi ensinada a criação de rotas no backend e também a validação de dados com zod e integração ao banco de dados com prisma. No Frontend foi criado novos componentes e ensinado técnicas para lidar com datas e resolver dificuldades específicas do projeto. Por último no app mobile, a utilização do Nativewind para estilização como a do Tailwind na web, também foram adicionados componentes novos e reaproveitado algumas funções da web para lidar com datas.
-</details>
+O Habits é um app para monitoramento de tarefas diárias para auxiliar seus usuários a rastrear suas atividades realizadas e não realizadas.
 
-<details>
-  <summary>18/01/2023 • <b>Finalizando o layout web e mobile</b></summary>
-    Foram concluídas as últimas duas rotas do backend e ensinado o momento certo de se compor query SQL a mão. No frontend foi ensinado o uso da biblioteca Radix-UI para criação de componentes com acessibilidade pré configurada e técnicas para estilização com classes condicionais usando o pacote clsx. Por último no app mobile foi ensinado a criação de novas telas e a navegação usando o React Navigator, também foi ensinado a passar propriedades por contexto entre rotas.
-</details>
+O fluxo da aplicação é simples: o usuário cadastra os hábitos desejados indicando em quais dias da semana deverão ser realizados e todos os dias ele terá uma listas de hábitos de acordo com o dia atual, aonde ele irá indicar o status de cada hábito e a aplicação irá gerar um progresso diário que será ilustrado na barra de progresso e também nas cores dos quadrados que representam os dias onde cores mais claras representam números maiores de hábitos completos.
 
-<details>
-  <summary>19/01/2023 • <b>Conectando a API</b></summary>
-    Nessa aula o foco foi nos dois projetos frontend, web e mobile. Foi ensinado a buscar dados da API construída no backend usando o useEffect e axios, assim como a transmissão de dados do formulário para a API e toda a integração dos dados recebidos para compor a interface do app web. No app mobile foi feito um processo muito semelhante onde os dados do backend foram conectados com a interface e as informações do formulário de criação de hábito transmitidas para API.
-</details>
+A aplicação possui, além do backend, aplicação web e mobile, as quais serão ilustradas a seguir.
 
-<details>
-  <summary>20/01/2023 • <b>O próximo nível</b></summary>
-    Foi concluída toda a integração dos dados com a lista de hábitos exibida no gráfico diário tanto da web, quanto do mobile. Também foram feitas algumas modificações no estilo e animações para que as operações que fossem apresentadas de forma suave.
-</details>
+### Habits - Aplicação web
 
-![](./.github/banner2.png)
+Ao acessar a home da aplicação web o usuário irá se deparar com a página abaixo aonde será exibido um botão para cadastro de um novo hábito e vários quadrados os quais representam dias passados, dia atual e dia futuro. Como podemos ver a seguir, cada dia possui uma cor diferente, onde:
 
----
+- Cinza indica que nenhum hábito foi realizado.
+- Cores mais escuras indicam pouco progresso nos hábitos diários.
+- Cores mais claras indicam muito progresso nos hábitos diários.
+- Cinza com opacidade reduzida indica dias futuros e não são clicáveis.
 
-## Referência da API
+![Home](.github/screenshots/web-home.png)
 
-**Obter o resumo dos hábitos**
+Ao clicar no botão `Novo hábito`, o modal abaixo será exibido para o usuário inserir um título e os dias da semana em que o novo hábito deve ser realizado:
 
-```bash
-GET /summary
-```
+![Alt text](.github/screenshots/web-habit-form.png)
 
-**Obter os hábitos possíveis referente a uma data**
+Ao clicar em algum dos dias as informações dele serão exibidas, por exemplo: a sua data numérica, o dia da semana, a barra de progresso e a lista de hábitos que devem ser realizados no respectivo dia da semana, conforme imagem a seguir:
 
-```bash
-GET /day?{date}
+![Alt text](.github/screenshots/web-day-partial-completed.png)
 
-# /day/2023-01-20T14:00:00.000Z
-```
+Note que o quadrado do dia acima é mais escuro do que o da imagem a seguir. Isso se deve ao fato de que no dia abaixo a porcentagem de hábitos realizados foi maior:
 
-| Parâmetro | Tipo               | Descrição                   |
-| :-------- | :----------------- | :-------------------------- |
-| `date`    | `Date (ISOString)` | Data dos possíveis hábitos. |
+![Alt text](.github/screenshots/web-day-full-completed.png)
 
-**Alternar o estado de um hábito específico**
+Com isso conhecemos todos os fluxos da interface web ao utilizarmos a aplicação. Deixo abaixo um GIF de demonstração da aplicação sendo utilizada aonde passo por todas as funcionalidades acimas citadas:
 
-```bash
-PATCH /habits/{id}/toggle
+![Alt text](.github/web-demo.gif)
 
-# /habits/67961b77-5096-4b1b-96aa-d21bb949172b/toggle
-```
+### Habits - Aplicação mobile
 
-| Parâmetro | Tipo            | Descrição                             |
-| :-------- | :-------------- | :------------------------------------ |
-| `id`      | `string (UUID)` | Id do hábito a ter o estado alternado |
+As funcionalidades da aplicação mobile são as mesmas da web, portanto mostrarei as telas com menos explicações para evitar redundância e me atentarei somente à pequenos detalhes caso existam e sejam relevantes de serem citados.
 
-**Criar um hábito**
+Assim como na web, ao acessar a aplicação o usuário irá se deparar com os 'quadradinhos' que representam os dias com as colorações baseadas em seus respectivos progressos, como vemos abaixo:
 
-```bash
-POST /habits
+|                           Splash Screen                           |                              Home vazia                               |                       Home com progresso                        |
+| :---------------------------------------------------------------: | :-------------------------------------------------------------------: | :-------------------------------------------------------------: |
+| <img src="./.github/screenshots/mobile-splash.png" width="250" /> | <img src="./.github/screenshots/mobile-empty-home.png" width="250" /> | <img src="./.github/screenshots/mobile-home.png" width="250" /> |
 
-# Corpo em JSON
-# {
-#   "title": "Beber 2L de água",
-#   "weekDays": [0, 2, 4]
-# }
-```
+Diferentemente da web, ao clicar em algum dia para ver os detalhes não teremos o popover com seus detalhes e sim o redirecionamento para uma tela aonde essas informações serão exibidas. A seguir veremos as telas aonde temos um dia sem hábitos vinculados, um dia com hábitos parcialmente concluídos e um dia totalmente concluído, respectivamente:
 
-| Chave      | Tipo       | Descrição                                   |
-| :--------- | :--------- | :------------------------------------------ |
-| `title`    | `string`   | Título do hábito a ser criado               |
-| `weekDays` | `number[]` | Array numérico referente aos dias da semana |
+|                               Dia sem hábitos                                |                            Dia parcialmente concluído                            |                           Dia totalmente concluído                            |
+| :--------------------------------------------------------------------------: | :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
+| <img src="./.github/screenshots/mobile-day-without-habit.png" width="250" /> | <img src="./.github/screenshots/mobile-day-partial-completed.png" width="250" /> | <img src="./.github/screenshots/mobile-day-full-completed.png" width="250" /> |
 
-## Demonstração da aplicação completa
+Na Home e na tela de dia sem hábitos temos botão e link, respectivamente, que irá nos direcionar para o formulário de criação de um novo hábito.
+As informações necessárias são as mesmas da web e abaixo temos o fluxo de cadastro ilustrado:
 
-![](./.github/demo.gif)
+|                                 Form vazio                                 |                           Form preenchido                            |                               Cadastro concluído                               |
+| :------------------------------------------------------------------------: | :------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+| <img src="./.github/screenshots/mobile-new-habit-empty.png" width="250" /> | <img src="./.github/screenshots/mobile-new-habit.png" width="250" /> | <img src="./.github/screenshots/mobile-new-habit-completed.png" width="250" /> |
+
+Com isso concluímos nosso tour pela aplicação mobile! 🙂
+Assim como na web, deixo abaixo um GIF navegando pela aplicação e passando por todos seus fluxos e também a demonstração das animações presentes no App:
+
+<img src=".github/mobile-demo.gif" width="450" />
 
 ## Instalação
 
-> **Note**
-> Esse projeto está configurado como um monorepo e as dependências são gerenciadas pelo PNPM.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+Além disso é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
-### Configuração inicial
+> ⚠ Antes de executar o frontend e mobile verificar o IP da sua máquina e configurar no arquivo de setup do axios presente na pasta lib dos respectivos projetos
 
-Clone o repositório e instale as dependências.
-
-```bash
-git clone https://github.com/mateusabelli/nlw-setup
-
-cd nlw-setup
-
-pnpm install
-```
-
-### Variáveis ambiente
-
-Crie um arquivo .env em `/apps/server/.env` e cole o seguinte código:
+### 🎲 Rodando o Back End (servidor)
 
 ```bash
-DATABASE_URL="file:./dev.db"
+# Clone este repositório
+$ git clone git@github.com:MrRioja/nlw-setup.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd nlw-setup
+
+# Vá para a pasta server
+$ cd server
+
+# Instale as dependências
+$ npm install
+# Caso prefira usar o Yarn execute o comando abaixo
+$ yarn
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
+# Caso prefira usar o Yarn execute o comando abaixo
+$ yarn dev
+
+# O servidor inciará na porta 3333 - acesse <http://localhost:3333>
 ```
 
-### Banco de dados
-
-Com o arquivo .env criado na raiz do `server` rode o seguinte comando:
+### 🖥️ Rodando o Front End (Web)
 
 ```bash
-pnpm --filter server exec prisma migrate dev
+# Clone este repositório
+$ git clone git@github.com:MrRioja/nlw-setup.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd nlw-setup
+
+# Vá para a pasta web
+$ cd web
+
+# Instale as dependências
+$ npm install
+# Caso prefira usar o Yarn execute o comando abaixo
+$ yarn
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
+# Caso prefira usar o Yarn execute o comando abaixo
+$ yarn dev
+
+# O servidor inciará na porta 5173 - acesse <http://localhost:5173>
 ```
 
-> **Warning**
-> O comando `prisma generate` possuí uma falha APENAS na etapa da geração da imagem ERD.svg mas funciona normalmente na geração do PrismaClient.
-
-### Modificando o IP local ou porta
-
-Altere de acordo com o seu endereço local, os seguintes arquivos:
-
-- [axios.ts](./apps/web/src/lib/axios.ts) (web)
-- [axios.ts](./apps/mobile/src/lib/axios.ts) (mobile)
-- [server.ts](./apps/server/src/server.ts) (server)
-
-```diff
-# server.ts
-
-- app.listen({ port: 3001, host: "10.0.0.104" })
-+ app.listen({ port: 3333, host: "0.0.0.0" })
-
-# axios.ts
-
-- baseURL: "http://10.0.0.104:3001",
-+ baseURL: "http://0.0.0.0:3333",
-```
-
-### Como utilizar os comandos no monorepo
+### 📱 Rodando o App (Mobile)
 
 ```bash
-pnpm --filter [APP] [COMANDO]
+# Clone este repositório
+$ git clone git@github.com:MrRioja/nlw-setup.git
 
-# Exemplo
-pnpm --filter web dev
-pnpm --filter mobile start
-pnpm --filter server dev
+# Acesse a pasta do projeto no terminal/cmd
+$ cd nlw-setup
+
+# Vá para a pasta mobile
+$ cd mobile
+
+# Instale as dependências
+$ npm install
+# Caso prefira usar o Yarn execute o comando abaixo
+$ yarn
+
+# Execute a aplicação
+$ yarn start
+
+# Será aberto no terminal o menu do Expo onde poderá scanear o QR Code para executar o app diretamente no seu celular ou as opções de executar no emulador android ou iOS
 ```
 
-### Como instalar dependências e executar pacotes
+## Tecnologias
 
-```bash
-pnpm --filter [APP] install [PACOTE]
-pnpm --filter [APP] exec [PACOTE] [COMANDO]
+[![My Skills](https://skillicons.dev/icons?i=react,nodejs,vite,ts)](https://skillicons.dev)
 
-# Exemplo de instalação
-pnpm --filter web install dayjs
 
-# Exemplo de execução de pacote
-pnpm --filter server exec prisma studio
-```
-
-## O próximo nível
-
-- [ ] Autenticação de usuários (**Em andamento**)
-
-  - 23/01 Estudando monorepo com PNPM e criação de um backend Node.js com rotas de autenticação usando tRPC e JWT com refreshToken via cookies httpOnly
-
-- [ ] Notificações Push / Service Workers
-- [ ] Perfil público com gráfico de resumo
-
-## Contribuição
-
-Contribuições são sempre bem-vindas! Se você tem alguma ideia para melhorar o projeto, por favor, abra uma issue ou envie um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a licença **MIT**. Por favor, leia o arquivo [LICENSE.md](./LICENSE.md) para mais informações.
